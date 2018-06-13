@@ -1,4 +1,5 @@
-Entry(start)
+/* This is where the entrypoint is defined for the ELF. */
+ENTRY(start)
 
 SECTIONS {
     . = 1M;
