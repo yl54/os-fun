@@ -1,4 +1,3 @@
-/* This is where the entrypoint is defined for the ELF. */
 Entry(start)
 
 SECTIONS {
