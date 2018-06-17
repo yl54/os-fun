@@ -1,8 +1,3 @@
-; global is a nasm specific directive to export symbols in
-;   this code to where it points in the object code generated.
-; start will be added to the object (___.o) file.
-; the linker will read this symbol so it knows where to mark
-;   the as an entrypoint in the output executable. 
 global start
 
 ; the .text section is the default location for executable code.
