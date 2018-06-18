@@ -1,4 +1,4 @@
-# Bios Notes
+# BIOS
 
 ## Properties
 
