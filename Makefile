@@ -2,8 +2,8 @@ arch ?= x86_64
 kernel := build/kernel-$(arch).bin
 iso := build/os-$(arch).iso
 
-linker_script := arch/$(arch)/linker.ld
-grub_cfg := arch/$(arch)/grub.cfg
+linker_script := boot/$(arch)/linker.ld
+grub_cfg := boot/$(arch)/grub.cfg
 assembly_source_files := $(wildcard arch/$(arch)/*.asm)
 assembly_object_files := $(patsubst arch/$(arch)/%.asm, \
     build/arch/$(arch)/%.o, $(assembly_source_files))
