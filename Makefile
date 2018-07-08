@@ -9,24 +9,24 @@ assembly_object_files := $(patsubst boot/$(arch)/%.asm, build/arch/$(arch)/%.o, 
 
 .PHONY: all clean run iso
 
-all: $(kernel)
+all: kernel
 
 clean:
     rm -r build
 
-run: $(iso)
+run: iso
     qemu-system-x86_64 -cdrom $(iso)
 
-iso: $(iso)
+iso: iso
 
-$(iso): $(kernel) $(grub_cfg)
+iso: kernel $(grub_cfg)
     mkdir -p build/isofiles/boot/grub
     cp $(kernel) build/isofiles/boot/kernel.bin
     cp $(grub_cfg) build/isofiles/boot/grub
     grub-mkrescue -o $(iso) build/isofiles 2> /dev/null
     rm -r build/isofiles
 
-$(kernel): $(assembly_object_files) $(linker_script)
+kernel: $(assembly_object_files) $(linker_script)
     ld -n -T $(linker_script) -o $(kernel) $(assembly_object_files)
 
 # compile assembly files
