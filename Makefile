@@ -4,8 +4,8 @@ iso := build/os-$(arch).iso
 
 linker_script := boot/$(arch)/linker.ld
 grub_cfg := boot/$(arch)/grub.cfg
-assembly_source_files := $(wildcard arch/$(arch)/*.asm)
-assembly_object_files := $(patsubst arch/$(arch)/%.asm, \
+assembly_source_files := $(wildcard boot/$(arch)/*.asm)
+assembly_object_files := $(patsubst boot/$(arch)/%.asm, \
     build/arch/$(arch)/%.o, $(assembly_source_files))
 
 .PHONY: all clean run iso
