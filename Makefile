@@ -3,6 +3,27 @@ ifndef arch
 $(error arch is not set)
 endif
 
+boot_folder := boot/$(arch)/
+build_folder := build/
+
+# These files must exist for bootloading
+linker_script := linker.ld
+linker := $(boot_folder)$(linker_script)
+grub_cfg := grub.cfg
+grub := $(boot_folder)$(grub.cfg)
+
+# Binary containing kernel bootup steps
+kernel_file := kernel-$(arch).bin
+kernel := $(build_folder)$(kernel_file)
+
+# OS image
+iso_image := os-$(arch).iso
+iso := $(build_folder)$(iso_image)
+
+# Gather list of boot files.
+assembly_source_files := $(wildcard $(boot_folder)*.asm)
+assembly_object_files := $(patsubst $(boot_folder)%.asm, $(boot_folder)%.o, $(assembly_source_files))
+
 .PHONY: all clean run iso
 
 all: kernel
