@@ -10,7 +10,7 @@ build_folder := build
 linker_script := linker.ld
 linker := $(boot_folder)/$(linker_script)
 grub_cfg := grub.cfg
-grub := $(boot_folder)/$(grub.cfg)
+grub := $(boot_folder)/$(grub_cfg)
 
 # Binary containing kernel bootup steps
 kernel_file := kernel-$(arch).bin
@@ -22,7 +22,6 @@ iso := $(build_folder)/$(iso_image)
 
 # Gather list of boot files.
 assembly_source_files := $(wildcard $(boot_folder)/*.asm)
-assembly_object_files := $(patsubst $(boot_folder)/%.asm, $(boot_folder)/%.o, $(assembly_source_files))
 
 # Define the destination directory.
 build_isofiles := $(build_folder)/isofiles
